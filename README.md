@@ -1,9 +1,6 @@
-AX-Loader
+AX Loader
 =========
 
-<<<<<<< HEAD
-AX Loader is a software to upload compiled sketches (Hex file) to an Arduino. Basically implements a user friendly graphical interface for avrdude.
-=======
 AX Loader is a software to upload compiled sketches (Hex file) to an Arduino. 
 Basically implements a user friendly graphical interface for avrdude.
 
@@ -18,4 +15,3 @@ Download
 --------
 
 https://sourceforge.net/projects/axloader/
->>>>>>> 151a75d8f5057c4508b87e9e37a9277f31108188
