@@ -21,14 +21,14 @@
 	Contact: <jags9415@gmail.com>
 */
 
-namespace AXLoader {
+using namespace System;
+using namespace System::ComponentModel;
+using namespace System::Collections;
+using namespace System::Windows::Forms;
+using namespace System::Data;
+using namespace System::Drawing;
 
-	using namespace System;
-	using namespace System::ComponentModel;
-	using namespace System::Collections;
-	using namespace System::Windows::Forms;
-	using namespace System::Data;
-	using namespace System::Drawing;
+namespace AXLoader {
 
 	ref class AboutForm : public Form
 	{
@@ -51,6 +51,9 @@ namespace AXLoader {
 		System::Windows::Forms::Label^ LicenseImage;
 		System::Windows::Forms::Label^ MailLabel;
 		System::Windows::Forms::GroupBox^ GroupBox;
+		System::Windows::Forms::LinkLabel^  DesignerLinkLabel;
+		System::Windows::Forms::Label^  IconDesignerLabel;
+		System::Windows::Forms::ColorDialog^  colorDialog1;
 		System::ComponentModel::IContainer^ components;
 
 #pragma region Windows Form Designer generated code
@@ -66,15 +69,18 @@ namespace AXLoader {
 			this->LicenseImage = (gcnew System::Windows::Forms::Label());
 			this->MailLabel = (gcnew System::Windows::Forms::Label());
 			this->GroupBox = (gcnew System::Windows::Forms::GroupBox());
+			this->DesignerLinkLabel = (gcnew System::Windows::Forms::LinkLabel());
+			this->IconDesignerLabel = (gcnew System::Windows::Forms::Label());
+			this->colorDialog1 = (gcnew System::Windows::Forms::ColorDialog());
 			this->GroupBox->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// IconImage
 			// 
 			this->IconImage->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"IconImage.Image")));
-			this->IconImage->Location = System::Drawing::Point(12, 9);
+			this->IconImage->Location = System::Drawing::Point(12, -1);
 			this->IconImage->Name = L"IconImage";
-			this->IconImage->Size = System::Drawing::Size(105, 81);
+			this->IconImage->Size = System::Drawing::Size(109, 119);
 			this->IconImage->TabIndex = 0;
 			// 
 			// TitleLabel
@@ -82,7 +88,7 @@ namespace AXLoader {
 			this->TitleLabel->AutoSize = true;
 			this->TitleLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->TitleLabel->Location = System::Drawing::Point(134, 9);
+			this->TitleLabel->Location = System::Drawing::Point(127, 9);
 			this->TitleLabel->Name = L"TitleLabel";
 			this->TitleLabel->Size = System::Drawing::Size(104, 25);
 			this->TitleLabel->TabIndex = 1;
@@ -104,18 +110,18 @@ namespace AXLoader {
 			this->CopyrightLabel->AutoSize = true;
 			this->CopyrightLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->CopyrightLabel->Location = System::Drawing::Point(7, 45);
+			this->CopyrightLabel->Location = System::Drawing::Point(7, 35);
 			this->CopyrightLabel->Name = L"CopyrightLabel";
-			this->CopyrightLabel->Size = System::Drawing::Size(121, 17);
+			this->CopyrightLabel->Size = System::Drawing::Size(113, 17);
 			this->CopyrightLabel->TabIndex = 3;
-			this->CopyrightLabel->Text = L"Copyright  ©  2013";
+			this->CopyrightLabel->Text = L"Copyright © 2013";
 			// 
 			// AutorLabel
 			// 
 			this->AutorLabel->AutoSize = true;
 			this->AutorLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->AutorLabel->Location = System::Drawing::Point(7, 75);
+			this->AutorLabel->Location = System::Drawing::Point(7, 55);
 			this->AutorLabel->Name = L"AutorLabel";
 			this->AutorLabel->Size = System::Drawing::Size(158, 17);
 			this->AutorLabel->TabIndex = 7;
@@ -125,7 +131,7 @@ namespace AXLoader {
 			// 
 			this->LicenseImage->AccessibleDescription = L"";
 			this->LicenseImage->Image = (cli::safe_cast<System::Drawing::Image^  >(resources->GetObject(L"LicenseImage.Image")));
-			this->LicenseImage->Location = System::Drawing::Point(12, 98);
+			this->LicenseImage->Location = System::Drawing::Point(12, 108);
 			this->LicenseImage->Name = L"LicenseImage";
 			this->LicenseImage->Size = System::Drawing::Size(105, 67);
 			this->LicenseImage->TabIndex = 8;
@@ -137,7 +143,7 @@ namespace AXLoader {
 			this->MailLabel->AutoSize = true;
 			this->MailLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
 				static_cast<System::Byte>(0)));
-			this->MailLabel->Location = System::Drawing::Point(7, 105);
+			this->MailLabel->Location = System::Drawing::Point(7, 75);
 			this->MailLabel->Name = L"MailLabel";
 			this->MailLabel->Size = System::Drawing::Size(150, 17);
 			this->MailLabel->TabIndex = 9;
@@ -145,6 +151,8 @@ namespace AXLoader {
 			// 
 			// GroupBox
 			// 
+			this->GroupBox->Controls->Add(this->DesignerLinkLabel);
+			this->GroupBox->Controls->Add(this->IconDesignerLabel);
 			this->GroupBox->Controls->Add(this->VersionLabel);
 			this->GroupBox->Controls->Add(this->MailLabel);
 			this->GroupBox->Controls->Add(this->CopyrightLabel);
@@ -156,6 +164,30 @@ namespace AXLoader {
 			this->GroupBox->Size = System::Drawing::Size(176, 129);
 			this->GroupBox->TabIndex = 10;
 			this->GroupBox->TabStop = false;
+			// 
+			// DesignerLinkLabel
+			// 
+			this->DesignerLinkLabel->AutoSize = true;
+			this->DesignerLinkLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->DesignerLinkLabel->Location = System::Drawing::Point(110, 105);
+			this->DesignerLinkLabel->Name = L"DesignerLinkLabel";
+			this->DesignerLinkLabel->Size = System::Drawing::Size(68, 17);
+			this->DesignerLinkLabel->TabIndex = 11;
+			this->DesignerLinkLabel->TabStop = true;
+			this->DesignerLinkLabel->Text = L"acidrums4";
+			this->DesignerLinkLabel->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &AboutForm::DesignerLinkLabel_LinkClicked);
+			// 
+			// IconDesignerLabel
+			// 
+			this->IconDesignerLabel->AutoSize = true;
+			this->IconDesignerLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point, 
+				static_cast<System::Byte>(0)));
+			this->IconDesignerLabel->Location = System::Drawing::Point(7, 105);
+			this->IconDesignerLabel->Name = L"IconDesignerLabel";
+			this->IconDesignerLabel->Size = System::Drawing::Size(112, 17);
+			this->IconDesignerLabel->TabIndex = 10;
+			this->IconDesignerLabel->Text = L"Icon designed by ";
 			// 
 			// AboutForm
 			// 
@@ -184,7 +216,7 @@ namespace AXLoader {
 	private: 
 		
 		Void LicenseImage_Click(Object^ sender, EventArgs^ e);
-
+		Void DesignerLinkLabel_LinkClicked(Object^ sender, LinkLabelLinkClickedEventArgs^ e);
 };
 
 }

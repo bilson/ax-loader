@@ -228,6 +228,11 @@ namespace AXLoader
 		this->Loader->SetTarget( this->TargetTextBox->Text );
 	}
 
+	/// <summary>
+	/// Executed when the user drag a file over the window.
+	/// </summary>
+	/// <param name="sender">The sender of the event.</param>
+	/// <param name="e">The event arguments.</param>
 	Void MainForm::MainForm_DragEnter(Object^  sender, DragEventArgs^  e)
 	{
 		if ( e->Data->GetDataPresent(DataFormats::FileDrop) )
@@ -240,9 +245,15 @@ namespace AXLoader
 		}
 	}
 
+	/// <summary>
+	/// Executed when the user drop a file over the window.
+	/// </summary>
+	/// <param name="sender">The sender of the event.</param>
+	/// <param name="e">The event arguments.</param>
 	Void MainForm::MainForm_DragDrop(Object^  sender, DragEventArgs^  e)
 	{
 		array<String^>^ files = (array<String^>^) e->Data->GetData(DataFormats::FileDrop);
+
 		if (files->Length > 0)
 		{
 			this->TargetTextBox->Text = files[0];

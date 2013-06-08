@@ -56,4 +56,14 @@ namespace AXLoader
 		Process::Start( "http://www.gnu.org/licenses/" );
 	}
 
+	/// <summary>
+	/// Executed when click on the link label.
+	/// </summary>
+	/// <param name="sender">The sender of the event.</param>
+	/// <param name="e">The event arguments.</param>
+	Void AboutForm::DesignerLinkLabel_LinkClicked(Object^ sender, LinkLabelLinkClickedEventArgs^ e)
+	{
+		Process::Start( "http://acidrums4.deviantart.com/" );
+	}
+
 }
